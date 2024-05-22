@@ -11,5 +11,8 @@
     "javascriptreact",
     "typescript",
     "vue"
+  ],
+  "python.analysis.extraPaths": [
+    "c:/Users/javie/OneDrive/Escritorio/synthWave1/synthwave001/bots/CMS_Provider_data/."
   ]
 }
