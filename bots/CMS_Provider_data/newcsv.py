@@ -3,13 +3,20 @@ import os
 import sys
 from pathlib import Path
 
-
 # Function to extract the columns we want from the downloaded csv file
 def extract_columns(columns):
-    download_dir = Path(sys.argv[1])  # Use the download directory passed as an argument
+    download_dir = Path(os.getcwd()).joinpath('bots').joinpath('CMS_Provider_data').joinpath('dataset')  # Use the current directory plus '/dataset' as the download directory
+    print(f"Download directory: {download_dir}")  # Print the download directory
+
     # Get the latest downloaded file
-    files = os.listdir(download_dir) # Get all the files in the downloads folder
+    files = [f for f in os.listdir(download_dir) if f.startswith('HH_')] # Get all the files in the downloads folder that start with 'HH_'
     files.sort(key=lambda x: os.path.getmtime(os.path.join(download_dir, x))) # Sort the files by date
+
+    # Check if files list is not empty
+    if not files:
+        print("No files found that start with 'HH_' in the directory.")
+        return
+
     input_file = os.path.join(download_dir, files[-1]) # Get the latest file
 
     # Create a new csv file with the columns we want

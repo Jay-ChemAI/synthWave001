@@ -14,7 +14,7 @@ ${CHROME_DRIVER_PATH}     ${CURDIR}${/}lib/chromedriver-win64/chromedriver.exe
 *** Test Cases ***
 Start the download
     ${result}=    Download Full Dataset and Capture Result
-
+    ${pythonresult}=    Python
 ***Keywords***
 Download Full Dataset and Capture Result
     ${result}=    Run Keyword And Return Status    Download Full Dataset
@@ -40,7 +40,6 @@ Download Full Dataset
     Click Element      xpath= //*[@id="dialog--9"]/div[1]/main[1]/div[2]/div[1]/button[1]
     Sleep   2
     Close Browser
-    ${DOWNLOAD_DIR}    Set Variable    ${CURDIR}${/}dataset
-    #${result}    Run Process    python    newcsv.py    ${DOWNLOAD_DIR}
-    Log    Resultado del Script Python: ${result.stdout}
-
+Python
+    ${file}    Set Variable    ${CURDIR}${/}newcsv.py
+    ${py}    Run Process    python    ${file}

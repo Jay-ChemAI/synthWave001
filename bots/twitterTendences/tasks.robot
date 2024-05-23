@@ -40,3 +40,5 @@ Enter the page and scrapt tendences
     END
     Create File    ${CURDIR}${/}tendences.txt    ${all_text}
     Close Browser
+    ${pipe}=    Run Process    python    -m    synthPipe.py
+    Log    ${pipe.stdout}
